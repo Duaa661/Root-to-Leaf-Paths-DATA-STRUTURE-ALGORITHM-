@@ -1,0 +1,19 @@
+class Solution {
+  public:
+  vector<vector<int>>temp;
+  void find(Node* root,vector<int>ans){
+      if(!root){
+          return;
+      }
+       ans.push_back(root->data);
+      if(!root->left &&!root->right)
+          temp.push_back(ans);
+          find(root->left,ans);
+          find(root->right,ans);
+  }
+    vector<vector<int>> Paths(Node* root) {
+          vector<int>ans;
+        find(root,ans);
+        return temp;
+    }
+};
